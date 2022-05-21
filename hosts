@@ -1,0 +1,12 @@
+k3s-01 ansible_ssh_host=192.168.30.101 ansible_ssh_user=vagrant
+k3s-02 ansible_ssh_host=192.168.30.102 ansible_ssh_user=vagrant
+k3s-03 ansible_ssh_host=192.168.30.102 ansible_ssh_user=vagrant
+k3s-04 ansible_ssh_host=192.168.30.102 ansible_ssh_user=vagrant
+
+[k3s_master]
+k3s-01
+
+[k3s_node]
+k3s-02
+k3s-03
+k3s-04
