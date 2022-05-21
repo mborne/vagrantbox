@@ -1,11 +1,5 @@
 #!/bin/bash
 
-#------------------------------------------------------------------
-# Start small K3S cluster :
-# - vagrantbox-01 as server node
-# - vagrantbox-02 as agent node
-#------------------------------------------------------------------
-
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 cd ${SCRIPT_DIR}
 

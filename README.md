@@ -15,7 +15,7 @@ vagrant plugin install vagrant-dns
 ## Usage
 
 ```bash
-vagrant up --provider=libvirt
+bash start.sh
 ```
 
 ## Name resolution from host
