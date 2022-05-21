@@ -1,0 +1,25 @@
+---
+- name: Configure vagrantbox
+  hosts: all
+  become: true
+
+  tasks:
+
+  - name: Display host properties
+    debug:
+      msg: "{{ inventory_hostname }} ({{ ansible_distribution }})"
+
+  - name: Configure authorized keys for current user
+    authorized_key:
+      user: "{{ ansible_ssh_user }}"
+      key: "{{ lookup('file','~/.ssh/id_rsa.pub') }}"
+      state: present
+
+  - name: Add IP address of all hosts to all hosts
+    lineinfile:
+      dest: /etc/hosts
+      regexp: '.*{{ item }}$'
+      line: "{{ hostvars[item].ansible_host }} {{item}}"
+      state: present
+    when: hostvars[item].ansible_host is defined
+    with_items: "{{ groups.all }}"
