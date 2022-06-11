@@ -1,6 +1,6 @@
 # vagrantbox
 
-Vagrant helper with Ansible provisioning to create some local VM (`vagrantbox-01`, `vagrantbox-02`,...) to play with distributed systems.
+Vagrant helper with Ansible provisioning to create some local VM (`vagrantbox-01`, `vagrantbox-02`,...) to play with distributed systems like [K3S](https://k3s.io/).
 
 ## Requirements
 
@@ -27,15 +27,7 @@ Start [K3S](https://k3s.io/) :
 bash start-k3s.sh
 ```
 
-It will display usage infos :
-
-```bash
-#----------------------------------------------------
-# Usage :
-#----------------------------------------------------
-export KUBECONFIG=/home/mickael/vagrantbox/.k3s/config
-kubectl cluster-info
-```
+Usage infos will be displayed :
 
 ```bash
 export KUBECONFIG=$PWD/.k3s/config
