@@ -3,6 +3,7 @@
   hosts: all
   become: true
   tasks:
+
   - name: "Configure /etc/hosts"
     lineinfile:
       regexp: '^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3} {{ ansible_hostname }}$'
@@ -10,3 +11,4 @@
       state: present
       path: /etc/hosts
     delegate_to: localhost
+

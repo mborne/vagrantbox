@@ -4,40 +4,20 @@ Vagrant helper with Ansible provisioning to create some local VM (`vagrantbox-01
 
 ## Requirements
 
-```bash
-# KVM support
-vagrant plugin install vagrant-libvirt
-# DNS resolution from host
-vagrant plugin install vagrant-dns
-# vagrant dns --uninstall
-```
+* Ansible
+* VirtualBox
 
 ## Usage
 
-```bash
-bash start.sh
-```
-
-## Name resolution from host
+* Start VMs : `vagrant up`
+* [Configure hostname resolution from host](docs/resolv-hostname.md)
 
 ```bash
-# to configure /etc/hosts on host
 ansible-playbook -i inventory configure-host.yml --ask-become-pass
-# check
-ping vagrantbox-01
-ping vagrantbox-02
 ```
 
-> See also [vagrant-dns plugin](https://github.com/BerlinVagrant/vagrant-dns)
+* Check connectivity : `ansible -i inventory all -m ping`
 
-## Ansible from host
-
-> [blog.christophersmart.com - Using a dynamic libvirt inventory with Ansible](https://blog.christophersmart.com/2022/04/03/using-a-dynamic-libvirt-inventory-with-ansible/)
-
-```bash
-# to check connectivity
-ansible -i inventory all -m ping
-```
 
 ## K3S Kubernetes cluster
 
@@ -62,10 +42,6 @@ export KUBECONFIG=$PWD/.k3s/config
 kubectl cluster-info
 ```
 
-## Ressources
+## See also
 
-* [computingforgeeks.com - Install KVM Hypervisor on Ubuntu 22.04|20.04](https://computingforgeeks.com/install-kvm-hypervisor-on-ubuntu-linux/)
-* [KVM - ubuntu 20.04 setup notes](KVM.md)
-
-
-
+* [blog.christophersmart.com - Using a dynamic libvirt inventory with Ansible](https://blog.christophersmart.com/2022/04/03/using-a-dynamic-libvirt-inventory-with-ansible/)

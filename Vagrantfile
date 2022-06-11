@@ -13,18 +13,18 @@ Vagrant.configure("2") do |config|
     config.vm.define "vagrantbox-0#{i}" do |node|
       node.vm.hostname = "vagrantbox-0#{i}"
       node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.10#{i}"
-      node.disksize.size = '100GB'
+      node.disksize.size = '30GB'
 
       node.vm.provider "virtualbox" do |vb|
         vb.name = "vagrantbox-0#{i}"
         vb.gui = false
-        vb.memory = "1024"
+        vb.memory = "512"
       end
 
       # https://github.com/vagrant-libvirt/vagrant-libvirt#domain-specific-options
       node.vm.provider "libvirt" do |virt|
         virt.default_prefix = ""
-        virt.memory = "1024"
+        virt.memory = "512"
       end
 
       node.vm.provision "ansible" do |ansible|
