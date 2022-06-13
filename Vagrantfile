@@ -13,7 +13,10 @@ Vagrant.configure("2") do |config|
     config.vm.define "vagrantbox-0#{i}" do |node|
       node.vm.hostname = "vagrantbox-0#{i}"
       node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.10#{i}"
-      node.disksize.size = '30GB'
+      #node.disksize.size = '30GB'
+
+      # WSL2 problem
+      config.vm.synced_folder '.', '/vagrant', disabled: true
 
       node.vm.provider "virtualbox" do |vb|
         vb.name = "vagrantbox-0#{i}"
