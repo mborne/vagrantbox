@@ -16,7 +16,14 @@ Vagrant helper with Ansible provisioning to create some local VM (`vagrantbox-01
 ansible-playbook -i inventory configure-host.yml --ask-become-pass
 ```
 
+* Clear SSH known_keys : `bash clear-ssh.sh`
+
 * Check connectivity : `ansible -i inventory all -m ping`
+
+* Configure VM : `ansible-playbook -i inventory configure-vm.yml`
+
+* Configure HOST : `ansible-playbook -i inventory configure-host.yml --ask-become-pass`
+
 
 
 ## K3S Kubernetes cluster
