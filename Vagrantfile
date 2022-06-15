@@ -12,7 +12,12 @@ Vagrant.configure("2") do |config|
     config.vm.box = VAGRANTBOX_BOX
     config.vm.define "vagrantbox-#{i}" do |node|
       node.vm.hostname = "vagrantbox-#{i}"
+
+      # node.vm.network "forwarded_port", guest: 80, host: 8080
+      # node.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+      # node.vm.network "public_network"
       node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}"
+
       node.disksize.size = '100GB'
 
       # WSL2 problem
