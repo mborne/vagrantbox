@@ -5,41 +5,18 @@ Vagrant helper with Ansible provisioning to create some local VM (`vagrantbox-01
 ## Requirements
 
 * Ansible
-* VirtualBox or KVM
+* VirtualBox or [KVM](docs/kvm.md)
+* Optional : `vagrant plugin install vagrant-proxyconf` to forward HTTP_PROXY, HTTPS_PROXY and NO_PROXY.
 
 ## Usage
 
-* Start VMs : `vagrant up` or `vagrant up`
-* [Configure hostname resolution from host](docs/resolv-hostname.md)
-
-```bash
-ansible-playbook -i inventory configure-host.yml --ask-become-pass
-```
-
+* Start VMs : `vagrant up` or `vagrant up --provider=libvirt`
+* Configure hostname resolution from host :
+  * Option 1) `/etc/hosts` : `ansible-playbook -i inventory configure-host.yml --ask-become-pass`
+  * Option 2) [dnsmasq](docs/dnsmasq.md)
 * Clear SSH known_keys : `bash clear-ssh.sh`
-
 * Check connectivity : `ansible -i inventory all -m ping`
-
 * Configure VM : `ansible-playbook -i inventory configure-vm.yml`
-
-* Configure HOST : `ansible-playbook -i inventory configure-host.yml --ask-become-pass`
-
-
-
-## K3S Kubernetes cluster
-
-Start [K3S](https://k3s.io/) :
-
-```bash
-bash start-k3s.sh
-```
-
-Usage infos will be displayed :
-
-```bash
-export KUBECONFIG=$PWD/.k3s/config
-kubectl cluster-info
-```
 
 ## See also
 
