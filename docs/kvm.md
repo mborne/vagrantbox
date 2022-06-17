@@ -1,8 +1,6 @@
 # KVM
 
-## Install KVM
-
-From [How to Install KVM on Ubuntu 20.04](https://phoenixnap.com/kb/ubuntu-install-kvm)
+## Install KVM packages
 
 ```bash
 # Step 1: Install KVM Packages
@@ -16,7 +14,7 @@ virsh list --all
 sudo systemctl status libvirtd
 ```
 
-## Start VM with KVM
+## Install vagrant-libvirt plugin
 
 ```bash
 # Install vagrant plugin dependencies
@@ -29,13 +27,14 @@ vagrant up --provider=libvirt
 vagrant destroy -f --provider=libvirt
 ```
 
-## Install graphical UI for KVM
+## Install UI for KVM (optional)
 
 ```bash
 sudo apt install virt-manager
 ```
 
-## See also
+## Ressources
 
+* [phoenixnap.com - How to Install KVM on Ubuntu 20.04](https://phoenixnap.com/kb/ubuntu-install-kvm)
 * [computingforgeeks.com - Install KVM Hypervisor on Ubuntu 22.04|20.04](https://computingforgeeks.com/install-kvm-hypervisor-on-ubuntu-linux/)
-* [KVM - ubuntu 20.04 setup notes](KVM.md)
+

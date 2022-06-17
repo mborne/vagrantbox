@@ -5,11 +5,11 @@ Vagrant helper with Ansible provisioning to create some local VM (`vagrantbox-01
 ## Requirements
 
 * Ansible
-* VirtualBox
+* VirtualBox or KVM
 
 ## Usage
 
-* Start VMs : `vagrant up`
+* Start VMs : `vagrant up` or `vagrant up`
 * [Configure hostname resolution from host](docs/resolv-hostname.md)
 
 ```bash
