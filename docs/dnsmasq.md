@@ -1,18 +1,6 @@
-# Resolve hostname from host
+# dnsmasq
 
-## /etc/hosts
-
-Add this lines to `/etc/hosts` :
-
-```
-192.168.30.101 vagrantbox-01
-192.168.30.102 vagrantbox-02
-192.168.30.101 vagrantbox traefik.vagrantbox longhorn.vagrantbox
-```
-
-## dnsmasq
-
-### 1) Make it work with systemd-resolved
+## Make it works with systemd-resolved
 
 * `/etc/dnsmasq.conf` to configure a custom listen IP :
 
@@ -29,12 +17,12 @@ DNS=127.0.0.2
 Domains=*
 ```
 
-### 2) Samples
+## Sample usage
 
 * `/etc/dnsmasq.d/01-vagrantbox.conf`
 
 ```ini
-address=/.vagrantbox.dev/192.168.30.101
+address=/.vagrantbox.dev/192.168.50.101
 ```
 
 * `/etc/dnsmasq.d/99-forward.conf` to forward to external DNS :
