@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 VAGRANTBOX_BOX          = "generic/ubuntu2004"
-VAGRANTBOX_NUM_NODES = ENV["VAGRANTBOX_NUM_NODES"] || 5
+VAGRANTBOX_NUM_NODES = ENV["VAGRANTBOX_NUM_NODES"] || 3
 VAGRANTBOX_NUM_NODES = VAGRANTBOX_NUM_NODES.to_i
 VAGRANTBOX_NETWORK   = ENV["VAGRANTBOX_NETWORK"] || "192.168.50"
 
@@ -32,8 +32,8 @@ Vagrant.configure("2") do |config|
 
       # node.vm.network "forwarded_port", guest: 80, host: 8080
       # node.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
-      # node.vm.network "public_network"
-      node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}"
+      # node.vm.network "public_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}"
+      node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}", libvirt__forward_mode: 'route'
 
       node.disksize.size = '100GB'
 
