@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
       # node.vm.network "public_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}"
       node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}", libvirt__forward_mode: 'route'
 
-      node.disksize.size = '100GB'
+      # node.disksize.size = '100GB'
 
       # WSL2 problem
       config.vm.synced_folder '.', '/vagrant', disabled: true

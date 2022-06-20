@@ -16,7 +16,13 @@ Vagrant helper with Ansible provisioning to create some local VM (`vagrantbox-01
   * Option 2) [dnsmasq](docs/dnsmasq.md)
 * Clear SSH known_keys : `bash clear-ssh.sh`
 * Check connectivity : `ansible -i inventory all -m ping`
-* Configure VM : `ansible-playbook -i inventory configure-vm.yml`
+* Configure VM :
+
+```bash
+ansible-playbook -i inventory configure-vm.yml
+# on failure
+ansible-playbook -i inventory configure-vm.yml -e ansible_ssh_user=vagrant -e ansible_ssh_pass=vagrant
+```
 
 ## See also
 
