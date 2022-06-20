@@ -30,14 +30,9 @@ Vagrant.configure("2") do |config|
     config.vm.define "vagrantbox-#{i}" do |node|
       node.vm.hostname = "vagrantbox-#{i}"
 
-      # node.vm.network "forwarded_port", guest: 80, host: 8080
-      # node.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
       # node.vm.network "public_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}"
       node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}", libvirt__forward_mode: 'route'
 
-      # node.disksize.size = '100GB'
-
-      # WSL2 problem
       config.vm.synced_folder '.', '/vagrant', disabled: true
 
       node.vm.provider "virtualbox" do |vb|
@@ -52,6 +47,7 @@ Vagrant.configure("2") do |config|
         virt.memory = "1024"
       end
 
+      # not available in windows
       #node.vm.provision "ansible" do |ansible|
       #  ansible.playbook = "configure-vm.yml"
       #  ansible.compatibility_mode = "2.0"
