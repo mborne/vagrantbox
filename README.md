@@ -24,6 +24,10 @@ ansible-playbook -i inventory configure-vm.yml
 ansible-playbook -i inventory configure-vm.yml -e ansible_ssh_user=vagrant -e ansible_ssh_pass=vagrant
 ```
 
+## License
+
+[mborne/vagrantbox](https://github.com/mborne/vagrantbox) is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
 ## See also
 
 * [blog.christophersmart.com - Using a dynamic libvirt inventory with Ansible](https://blog.christophersmart.com/2022/04/03/using-a-dynamic-libvirt-inventory-with-ansible/)
