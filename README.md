@@ -1,12 +1,12 @@
 # vagrantbox
 
-Vagrant helper with Ansible provisioning to create some local VM (`vagrantbox-01`, `vagrantbox-02`,...) to play with distributed systems like [K3S](https://k3s.io/).
+Vagrant helper to create some local VM (`vagrantbox-01`, `vagrantbox-02`,...) to play with distributed systems like [K3S](https://k3s.io/).
 
 ## Requirements
 
-* Ansible
 * VirtualBox or [KVM](docs/kvm.md)
-* Optional : `vagrant plugin install vagrant-proxyconf` to forward HTTP_PROXY, HTTPS_PROXY and NO_PROXY.
+* `vagrant plugin install vagrant-proxyconf` to forward HTTP_PROXY, HTTPS_PROXY and NO_PROXY (Optional).
+* Ansible (Optional)
 
 ## Usage
 
