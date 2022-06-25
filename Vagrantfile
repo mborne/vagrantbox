@@ -29,9 +29,7 @@ Vagrant.configure("2") do |config|
     config.vm.box = VAGRANTBOX_BOX
     config.vm.define "vagrantbox-#{i}" do |node|
       node.vm.hostname = "vagrantbox-#{i}"
-
-      # node.vm.network "public_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}"
-      node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}", libvirt__forward_mode: 'route'
+      node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}"
 
       config.vm.synced_folder '.', '/vagrant', disabled: true
 
