@@ -1,0 +1,16 @@
+---
+
+- name: "Install K3S requirements for longhorn"
+  include_tasks: install-requirements.yml
+
+- name: "Install K3S as a master node"
+  include_tasks: install-master.yml
+  when: k3s_mode == 'server'
+
+- name: "Install K3S as a agent node"
+  include_tasks: install-agent.yml
+  when: k3s_mode == 'agent'
+
+- name: "Fetch K3S config from master node"
+  include_tasks: fetch-config.yml
+  when: k3s_mode == 'server'

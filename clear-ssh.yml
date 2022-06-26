@@ -1,0 +1,13 @@
+---
+- name: Configure VM host
+  hosts: all
+  gather_facts: no
+  tasks:
+
+  - name: "Remove {{ inventory_hostname }} from ~/.ssh/known_host"
+    shell: "ssh-keygen -f '{{ lookup('env','HOME') }}/.ssh/known_hosts' -R '{{ inventory_hostname }}'"
+    delegate_to: localhost
+
+  - name: "Remove {{ ansible_ssh_host }} from ~/.ssh/known_host"
+    shell: "ssh-keygen -f '{{ lookup('env','HOME') }}/.ssh/known_hosts' -R '{{ ansible_ssh_host }}'"
+    delegate_to: localhost

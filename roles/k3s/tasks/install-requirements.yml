@@ -1,0 +1,23 @@
+---
+- name: "Install curl and jq"
+  apt:
+    name: [curl,jq]
+    state: present
+    update_cache: yes
+
+- name: "Install nfs-common (longhorn requirement)"
+  apt:
+    name: nfs-common
+    state: present
+
+- name: "Install open-iscsi (longhorn requirement)"
+  apt:
+    name: open-iscsi
+    state: present
+
+- name: Enable service iscsid and ensure it is started
+  ansible.builtin.systemd:
+    name: iscsid
+    enabled: yes
+    state: started
+

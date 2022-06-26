@@ -1,4 +1,1 @@
-# https://stackoverflow.com/a/66495119
-# troubleshooting flannel/longhorn problem : --flannel-iface=eth1 --disable-network-policy
-# https://github.com/k3s-io/k3s/issues/1523#issuecomment-602098986
-k3s_installer_opts: "--disable traefik --write-kubeconfig-mode 644 --tls-san 192.168.50.201 --kube-apiserver-arg service-node-port-range=1-65000 --kube-apiserver-arg advertise-address=192.168.50.201 --kube-apiserver-arg external-hostname=192.168.50.201 --flannel-iface=eth1 --disable-network-policy"
+k3s_installer_opts: "--disable traefik --write-kubeconfig-mode 644 --flannel-iface=eth1 --disable-network-policy"
