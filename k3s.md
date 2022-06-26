@@ -4,6 +4,16 @@ Deploy a [K3S](https://k3s.io/) DEV cluster on vagrantbox VMs.
 
 ## Usage
 
+### One shot
+
+```bash
+ansible-playbook -i inventory k3s.yml
+export KUBECONFIG=$PWD/.k3s/k3s.yaml
+kubectl get nodes -o wide
+```
+
+### Step by step
+
 * Install K3S on master node (vagrantbox-1)
 
 ```bash
@@ -22,6 +32,7 @@ watch kubectl get nodes -o wide
 ```bash
 ansible-playbook -i inventory k3s-agent.yml
 ```
+
 
 ## Have fun with kubernetes...
 
