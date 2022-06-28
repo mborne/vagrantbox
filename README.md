@@ -5,7 +5,6 @@ Vagrant helper to create some local VM (`vagrantbox-01`, `vagrantbox-02`,...) to
 ## Requirements
 
 * VirtualBox or [KVM](docs/kvm.md)
-* Optional : `vagrant plugin install vagrant-proxyconf` to forward HTTP_PROXY, HTTPS_PROXY and NO_PROXY.
 * Ansible to configure host and VM
 
 ## Usage

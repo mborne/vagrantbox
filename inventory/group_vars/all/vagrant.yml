@@ -1,2 +1,0 @@
-ansible_ssh_user: vagrant
-ansible_ssh_password: vagrant
