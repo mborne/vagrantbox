@@ -25,7 +25,6 @@ ansible -i inventory all -m ping
 * Configure VM :
 
 ```bash
-# -e ansible_ssh_user=vagrant -e ansible_ssh_pass=vagrant
 ansible-playbook -i inventory configure-vm.yml
 ```
 

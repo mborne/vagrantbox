@@ -1,10 +1,11 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VAGRANTBOX_BOX       = ENV["VAGRANTBOX_BOX"] || "generic/ubuntu2004"
+VAGRANTBOX_BOX       = ENV["VAGRANTBOX_BOX"] || "ubuntu/focal64"
 VAGRANTBOX_NUM_NODES = ENV["VAGRANTBOX_NUM_NODES"] || 3
 VAGRANTBOX_NUM_NODES = VAGRANTBOX_NUM_NODES.to_i
 VAGRANTBOX_NETWORK   = ENV["VAGRANTBOX_NETWORK"] || "192.168.50"
+
 
 Vagrant.configure("2") do |config|
 
