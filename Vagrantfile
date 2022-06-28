@@ -19,13 +19,13 @@ Vagrant.configure("2") do |config|
       node.vm.provider "virtualbox" do |vb|
         vb.name = "vagrantbox-#{i}"
         vb.gui = false
-        vb.memory = "1024"
+        vb.memory = "2048"
       end
 
       # https://github.com/vagrant-libvirt/vagrant-libvirt#domain-specific-options
       node.vm.provider "libvirt" do |virt|
         virt.default_prefix = ""
-        virt.memory = "1024"
+        virt.memory = "2048"
       end
 
       # not available in windows
