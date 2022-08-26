@@ -1,6 +1,6 @@
 ---
 
-- name: "Install K3S requirements for longhorn"
+- name: "Install K3S requirements"
   include_tasks: install-requirements.yml
 
 - name: "Configure /etc/rancher/k3s/registries.yaml"
