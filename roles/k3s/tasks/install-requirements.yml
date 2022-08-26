@@ -1,4 +1,9 @@
 ---
+
+- name: "Update apt cache"
+  apt:
+    update_cache: yes
+
 - name: "Install curl and jq"
   apt:
     name: [curl,jq]
@@ -24,6 +29,6 @@
 - name: Configure vm.max_map_count for ElasticSearch and OpenSearch
   ansible.posix.sysctl:
     name: vm.max_map_count
-    value: '262144
+    value: '262144'
     state: present
     reload: yes
