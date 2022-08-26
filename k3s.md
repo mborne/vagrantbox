@@ -8,11 +8,13 @@ Deploy a [K3S](https://k3s.io/) DEV cluster on vagrantbox VMs.
 
 ```bash
 ansible-playbook -i inventory k3s.yml
+# or something like :
+# ansible-playbook -i inventory k3s.yml -e k3s_docker_mirror=https://docker-mirror.quadtreeworld.net
 export KUBECONFIG=$PWD/.k3s/k3s.yaml
 kubectl get nodes -o wide
 ```
 
-### Step by step
+### Step by step
 
 * Install K3S on master node (vagrantbox-1)
 
@@ -34,12 +36,12 @@ ansible-playbook -i inventory k3s-agent.yml
 ```
 
 
-## Have fun with kubernetes...
+## Have fun with kubernetes...
 
 * [kubernetes.io](https://kubernetes.io/)
 * [container.training](https://container.training/)
 
-## Uninstall K3S
+## Uninstall K3S
 
 ```bash
 # uninstall k3s on agent nodes
@@ -48,7 +50,7 @@ ansible -i inventory k3s_agent -m shell -a "k3s-agent-uninstall.sh" --become
 ansible -i inventory k3s_master -m shell -a "k3s-uninstall.sh" --become
 ```
 
-## Notes
+## Notes
 
 * Playbook is based on `curl -sfL https://get.k3s.io | sh -s -`.
 * Playbook is not intented to be used for production.

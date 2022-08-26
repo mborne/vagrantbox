@@ -11,3 +11,7 @@
   - name: "Remove {{ ansible_ssh_host }} from ~/.ssh/known_host"
     shell: "ssh-keygen -f '{{ lookup('env','HOME') }}/.ssh/known_hosts' -R '{{ ansible_ssh_host }}'"
     delegate_to: localhost
+
+  - name: "ssh-keyscan {{ ansible_ssh_host }} to ~/.ssh/known_host"
+    shell: "ssh-keyscan -H '{{ ansible_ssh_host }}' >> '{{ lookup('env','HOME') }}/.ssh/known_hosts'"
+    delegate_to: localhost
