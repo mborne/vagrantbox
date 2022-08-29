@@ -1,6 +1,6 @@
 # vagrantbox
 
-Vagrant helper to create some local VM (`vagrantbox-01`, `vagrantbox-02`,...) to play with distributed systems like [K3S](https://k3s.io/).
+Vagrant helper to create some local VM to play with distributed systems like [K3S](https://k3s.io/).
 
 ## Requirements
 
