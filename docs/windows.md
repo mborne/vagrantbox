@@ -1,4 +1,4 @@
-# Windows...
+# Using vagrantbox on windows
 
 ## Key points
 
