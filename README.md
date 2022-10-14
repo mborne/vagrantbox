@@ -1,17 +1,29 @@
 # vagrantbox
 
-Vagrant helper to create some local VM to play with distributed systems like [K3S](https://k3s.io/).
+Vagrant helper to create some local VM to play with distributed systems like [K3S](https://github.com/mborne/deploy-k3s#readme).
 
 ## Requirements
 
 * VirtualBox or [KVM](docs/kvm.md)
-* Ansible to configure host and VM
+* Ansible to deploy configure host and VM
+* Optional (http proxy) : `vagrant plugin install vagrant-proxyconf` to forward `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY`.
+
+## Parameters
+
+See supported env vars in [Vagrantfile](Vagrantfile).
 
 ## Usage
 
-* Start VMs : `vagrant up` or `vagrant up --provider=libvirt`
-* Optional ([windows...](docs/windows.md)) : switch into a linux VM sharing `192.168.50.0/24` network.
-* Configure host :
+### Starting VM with Vagrant
+
+```bash
+# With default provider (VirtualBox)
+vagrant up
+# or with KVM :
+# vagrant up --provider=libvirt
+```
+
+### Configure host with Ansible
 
 ```bash
 # clear ~/.ssh/known_host
@@ -22,19 +34,20 @@ ansible-playbook -i inventory configure-host.yml --ask-become-pass
 ansible -i inventory all -m ping
 ```
 
-* Configure VM :
+### Configure VM with Ansible
+
+Use [configure-vm.yml](configure-vm.yml) to add your public key to vagrant user and configure `/etc/hosts` :
 
 ```bash
 ansible-playbook -i inventory configure-vm.yml
 ```
 
-* Optional : [Deploy K3S](k3s.md)
-
 ## License
 
-[mborne/vagrantbox](https://github.com/mborne/vagrantbox) is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+[MIT](LICENSE)
 
-## See also
+## Ressources
 
-* [dnsmasq](docs/dnsmasq.md)
+* [Using vagrantbox on windows](docs/windows.md)
 * [blog.christophersmart.com - Using a dynamic libvirt inventory with Ansible](https://blog.christophersmart.com/2022/04/03/using-a-dynamic-libvirt-inventory-with-ansible/)
+* [dnsmasq](docs/dnsmasq.md)
