@@ -25,14 +25,11 @@ vagrant up
 
 ### Configure host with Ansible
 
-```bash
-# clear ~/.ssh/known_host
-ansible-playbook -i inventory clear-ssh.yml
-# configure /etc/hosts
-ansible-playbook -i inventory configure-host.yml --ask-become-pass
-# check connectivity
-ansible -i inventory all -m ping
-```
+* Clear `~/.ssh/known_host` : `ansible-playbook -i inventory clear-ssh.yml`
+* Configure `/etc/hosts` : `ansible-playbook -i inventory configure-host.yml --ask-become-pass`
+* Check connectivity : `ansible -i inventory all -m ping`
+  
+![Screenshot connectivity](docs/img/screenshot-ping.png)
 
 ### Configure VM with Ansible
 
@@ -41,6 +38,8 @@ Use [configure-vm.yml](configure-vm.yml) to add your public key to vagrant user 
 ```bash
 ansible-playbook -i inventory configure-vm.yml
 ```
+
+![Screenshot connectivity](docs/img/screenshot-configure-vm.png)
 
 ## License
 
