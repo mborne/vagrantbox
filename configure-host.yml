@@ -1,5 +1,5 @@
 ---
-- name: Configure VM host
+- name: Configure /etc/hosts for localhost
   hosts: all
   gather_facts: no
   tasks:

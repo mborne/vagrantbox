@@ -1,6 +1,6 @@
 # vagrantbox
 
-Vagrant helper to create some local VM to play with distributed systems like [K3S](https://github.com/mborne/k3s-deploy#k3s-deploy).
+Vagrant helper to create local VMs to play with distributed systems like [K3S](https://github.com/mborne/k3s-deploy#k3s-deploy).
 
 ## Requirements
 
@@ -14,32 +14,40 @@ See supported env vars in [Vagrantfile](Vagrantfile).
 
 ## Usage
 
-### Starting VM with Vagrant
+### Vagrant
 
-```bash
-# With default provider (VirtualBox)
-vagrant up
-# or with KVM :
-# vagrant up --provider=libvirt
-```
+| Description     | Command                                                            |
+| --------------- | ------------------------------------------------------------------ |
+| Start VMs       | `vagrant up` (VirtualBox) or `vagrant up --provider=libvirt` (KVM) |
+| Check VM status | `vagrant status`                                                   |
+| Connect to a VM | `vagrant ssh vagrantbox-1`                                         |
+| Destroy VMs     | `vagrant destroy -f`                                               |
 
-### Configure host with Ansible
+(see also [gist.github.com - wpscholar/vagrant-cheat-sheet.md](https://gist.github.com/wpscholar/a49594e2e2b918f4d0c4#file-vagrant-cheat-sheet-md))
 
-* Clear `~/.ssh/known_host` : `ansible-playbook -i inventory clear-ssh.yml`
-* Configure `/etc/hosts` : `ansible-playbook -i inventory configure-host.yml --ask-become-pass`
+### Ansible
+
+You may use `ansible-playbook -i inventory quick-start.yml --ask-become-pass` or perform the following steps :
+
+### Configure localhost with Ansible
+
+* Update `~/.ssh/known_host` on localhost : `ansible-playbook -i inventory clear-ssh.yml`
+
+![clear-ssh result](docs/img/screenshot-clear-ssh.png)
+
 * Check connectivity : `ansible -i inventory all -m ping`
-  
+
 ![Screenshot connectivity](docs/img/screenshot-ping.png)
 
-### Configure VM with Ansible
+* Add `/etc/hosts` : `ansible-playbook -i inventory configure-host.yml --ask-become-pass`
 
-Use [configure-vm.yml](configure-vm.yml) to add your public key to vagrant user and configure `/etc/hosts` :
+### Configure VMs with Ansible
 
-```bash
-ansible-playbook -i inventory configure-vm.yml
-```
+* Add your public key to vagrant user and configure `/etc/hosts` : `ansible-playbook -i inventory configure-vm.yml`
 
 ![Screenshot connectivity](docs/img/screenshot-configure-vm.png)
+
+* Upgrade system packages :  `ansible-playbook -i inventory upgrade.yml`
 
 ## License
 

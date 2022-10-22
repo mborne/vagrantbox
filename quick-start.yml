@@ -1,0 +1,6 @@
+---
+- import_playbook: configure-host.yml
+- import_playbook: clear-ssh.yml
+- import_playbook: configure-host.yml
+- import_playbook: configure-vm.yml
+- import_playbook: upgrade.yml

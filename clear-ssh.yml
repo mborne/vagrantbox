@@ -1,5 +1,5 @@
 ---
-- name: Configure VM host
+- name: "Update ~/.ssh/known_host on localhost"
   hosts: all
   gather_facts: no
   tasks:
