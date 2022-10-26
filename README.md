@@ -27,9 +27,19 @@ See supported env vars in [Vagrantfile](Vagrantfile).
 
 ### Ansible
 
-You may use `ansible-playbook -i inventory quick-start.yml --ask-become-pass` or perform the following steps :
+### Quick start
 
-### Configure localhost with Ansible
+You may use [quick-start.yml](quick-start.yml) playbook :
+
+```bash
+# /etc/hosts edition requires sudo
+ansible-playbook -i inventory quick-start.yml --ask-become-pass
+# /etc/hosts edition can be disabled
+ansible-playbook -i inventory configure-host.yml -e configure_host_enabled=false
+```
+### Step by step
+
+#### Configure localhost with Ansible
 
 * Update `~/.ssh/known_host` on localhost : `ansible-playbook -i inventory clear-ssh.yml`
 
@@ -41,7 +51,7 @@ You may use `ansible-playbook -i inventory quick-start.yml --ask-become-pass` or
 
 * Add `/etc/hosts` : `ansible-playbook -i inventory configure-host.yml --ask-become-pass`
 
-### Configure VMs with Ansible
+#### Configure VMs with Ansible
 
 * Add your public key to vagrant user and configure `/etc/hosts` : `ansible-playbook -i inventory configure-vm.yml`
 

@@ -2,6 +2,8 @@
 - name: Configure /etc/hosts for localhost
   hosts: all
   gather_facts: no
+  vars:
+    configure_host_enabled: true
   tasks:
 
   - name: "Configure /etc/hosts"
@@ -12,3 +14,4 @@
       path: /etc/hosts
     delegate_to: localhost
     become: true
+    when: configure_host_enabled|bool
