@@ -35,8 +35,12 @@ You may use [quick-start.yml](quick-start.yml) playbook :
 # /etc/hosts edition requires sudo
 ansible-playbook -i inventory quick-start.yml --ask-become-pass
 # /etc/hosts edition can be disabled
-ansible-playbook -i inventory configure-host.yml -e configure_host_enabled=false
+ansible-playbook -i inventory quick-start.yml -e configure_host_enabled=false
 ```
+
+> See [quickstart demo](docs/quickstart-demo.md).
+
+
 ### Step by step
 
 #### Configure localhost with Ansible
