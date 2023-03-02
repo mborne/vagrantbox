@@ -4,6 +4,9 @@
   become: true
   tasks:
 
+  - name: Wait for automatic system updates
+    shell: while sudo fuser /var/lib/dpkg/lock >/dev/null 2>&1; do sleep 1; done;
+
   - name: Upgrade packages
     apt:
       upgrade: yes
