@@ -22,3 +22,7 @@
       state: present
     when: hostvars[item].ansible_ssh_host is defined
     with_items: "{{ groups.all }}"
+
+
+
+

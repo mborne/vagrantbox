@@ -71,4 +71,3 @@ ansible-playbook -i inventory quick-start.yml -e configure_host_enabled=false
 
 * [Using vagrantbox on windows](docs/windows.md)
 * [blog.christophersmart.com - Using a dynamic libvirt inventory with Ansible](https://blog.christophersmart.com/2022/04/03/using-a-dynamic-libvirt-inventory-with-ansible/)
-* [dnsmasq](docs/dnsmasq.md)
