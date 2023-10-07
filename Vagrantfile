@@ -5,6 +5,7 @@ VAGRANTBOX_BOX        = ENV["VAGRANTBOX_BOX"] || "ubuntu/focal64"
 VAGRANTBOX_NUM_NODES  = ENV["VAGRANTBOX_NUM_NODES"] || 3
 VAGRANTBOX_NUM_NODES  = VAGRANTBOX_NUM_NODES.to_i
 VAGRANTBOX_NETWORK    = ENV["VAGRANTBOX_NETWORK"] || "192.168.50"
+VAGRANTBOX_MEMORY     = ENV["VAGRANTBOX_MEMORY"] || "2048"
 
 Vagrant.configure("2") do |config|
 
@@ -40,13 +41,13 @@ Vagrant.configure("2") do |config|
       node.vm.provider "virtualbox" do |vb|
         vb.name = "vagrantbox-#{i}"
         vb.gui = false
-        vb.memory = "2048"
+        vb.memory = VAGRANTBOX_MEMORY
       end
 
       # https://github.com/vagrant-libvirt/vagrant-libvirt#domain-specific-options
       node.vm.provider "libvirt" do |virt|
         virt.default_prefix = ""
-        virt.memory = "2048"
+        virt.memory = VAGRANTBOX_MEMORY
       end
 
     end
