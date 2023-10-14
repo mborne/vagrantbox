@@ -4,14 +4,30 @@
   gather_facts: no
   tasks:
 
+  - name: Compute path to known_host
+    ansible.builtin.set_fact:
+      known_host_path: "{{ lookup('env','HOME') }}/.ssh/known_hosts"
+
+  - name: Check if known_host exists
+    ansible.builtin.stat:
+      path: "{{ known_host_path }}"
+    register: known_host_stat
+    run_once: true
+    delegate_to: localhost
+
   - name: "Remove {{ inventory_hostname }} from ~/.ssh/known_host"
-    shell: "ssh-keygen -f '{{ lookup('env','HOME') }}/.ssh/known_hosts' -R '{{ inventory_hostname }}'"
+    ansible.builtin.shell: "ssh-keygen -f '{{ known_host_path }}' -R '{{ inventory_hostname }}'"
+    when: known_host_stat.stat.exists
+    throttle: 1
     delegate_to: localhost
 
   - name: "Remove {{ ansible_ssh_host }} from ~/.ssh/known_host"
-    shell: "ssh-keygen -f '{{ lookup('env','HOME') }}/.ssh/known_hosts' -R '{{ ansible_ssh_host }}'"
+    ansible.builtin.shell: "ssh-keygen -f '{{ known_host_path }}' -R '{{ ansible_ssh_host }}'"
+    when: known_host_stat.stat.exists
+    throttle: 1
     delegate_to: localhost
 
   - name: "ssh-keyscan {{ ansible_ssh_host }} to ~/.ssh/known_host"
-    shell: "ssh-keyscan -H '{{ ansible_ssh_host }}' >> '{{ lookup('env','HOME') }}/.ssh/known_hosts'"
+    ansible.builtin.shell: "ssh-keyscan -H '{{ ansible_ssh_host }}' >> '{{ known_host_path }}'"
+    throttle: 1
     delegate_to: localhost
