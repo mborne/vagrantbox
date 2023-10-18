@@ -5,16 +5,27 @@ Vagrant helper to create local VMs to play with distributed systems like [K3S](h
 ## Requirements
 
 * VirtualBox or [KVM](docs/kvm.md)
-* Ansible to deploy configure host and VM
+* **Vagrant** to start VM (see [developer.hashicorp.com - Install Vagrant](https://developer.hashicorp.com/vagrant/downloads))
+* **Ansible** to configure host and VM (see [docs.ansible.com - Installing Ansible on Ubuntu](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu))
 * Optional (http proxy) : `vagrant plugin install vagrant-proxyconf` to forward `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY`.
 
 ## Parameters
 
-See supported env vars in [Vagrantfile](Vagrantfile).
+See supported env vars in [Vagrantfile](Vagrantfile) :
+
+| Name                   | Description                                                             | Default value      |
+| ---------------------- | ----------------------------------------------------------------------- | ------------------ |
+| `VAGRANTBOX_BOX`       | Base image from [Vagrant Cloud](https://app.vagrantup.com/boxes/search) | `"ubuntu/focal64"` |
+| `VAGRANTBOX_NUM_NODES` | Number of VM                                                            | `3`                |
+| `VAGRANTBOX_NETWORK`   | Network for VM                                                          | `"192.168.50"`     |
+| `VAGRANTBOX_MEMORY`    | VM memory in Mo                                                         | `"2048"`           |
+
 
 ## Usage
 
 ### Vagrant
+
+
 
 | Description     | Command                                                            |
 | --------------- | ------------------------------------------------------------------ |
@@ -25,7 +36,7 @@ See supported env vars in [Vagrantfile](Vagrantfile).
 
 (see also [gist.github.com - wpscholar/vagrant-cheat-sheet.md](https://gist.github.com/wpscholar/a49594e2e2b918f4d0c4#file-vagrant-cheat-sheet-md))
 
-### Ansible
+### Ansible 
 
 ### Quick start
 
