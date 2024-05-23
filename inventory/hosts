@@ -2,3 +2,4 @@
 vagrantbox-1 ansible_ssh_host=192.168.50.201
 vagrantbox-2 ansible_ssh_host=192.168.50.202
 vagrantbox-3 ansible_ssh_host=192.168.50.203
+vagrantbox-4 ansible_ssh_host=192.168.50.204

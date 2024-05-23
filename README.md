@@ -15,8 +15,8 @@ See supported env vars in [Vagrantfile](Vagrantfile) :
 
 | Name                   | Description                                                             | Default value      |
 | ---------------------- | ----------------------------------------------------------------------- | ------------------ |
-| `VAGRANTBOX_BOX`       | Base image from [Vagrant Cloud](https://app.vagrantup.com/boxes/search) | `"ubuntu/focal64"` |
-| `VAGRANTBOX_NUM_NODES` | Number of VM                                                            | `3`                |
+| `VAGRANTBOX_BOX`       | Base image from [Vagrant Cloud](https://app.vagrantup.com/boxes/search) | `"ubuntu/jammy64"` |
+| `VAGRANTBOX_NUM_NODES` | Number of VM                                                            | `4`                |
 | `VAGRANTBOX_NETWORK`   | Network for VM                                                          | `"192.168.50"`     |
 | `VAGRANTBOX_MEMORY`    | VM memory in Mo                                                         | `"2048"`           |
 
@@ -24,8 +24,6 @@ See supported env vars in [Vagrantfile](Vagrantfile) :
 ## Usage
 
 ### Vagrant
-
-
 
 | Description     | Command                                                            |
 | --------------- | ------------------------------------------------------------------ |

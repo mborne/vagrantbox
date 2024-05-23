@@ -1,11 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VAGRANTBOX_BOX        = ENV["VAGRANTBOX_BOX"] || "ubuntu/focal64"
-VAGRANTBOX_NUM_NODES  = ENV["VAGRANTBOX_NUM_NODES"] || 3
+VAGRANTBOX_BOX        = ENV["VAGRANTBOX_BOX"] || "ubuntu/jammy64"
+VAGRANTBOX_NUM_NODES  = ENV["VAGRANTBOX_NUM_NODES"] || 4
 VAGRANTBOX_NUM_NODES  = VAGRANTBOX_NUM_NODES.to_i
 VAGRANTBOX_NETWORK    = ENV["VAGRANTBOX_NETWORK"] || "192.168.50"
 VAGRANTBOX_MEMORY     = ENV["VAGRANTBOX_MEMORY"] || "2048"
+VAGRANTBOX_DISKSIZE   = ENV["VAGRANTBOX_DISKSIZE"] || "100GB"
 
 Vagrant.configure("2") do |config|
 
@@ -32,9 +33,7 @@ Vagrant.configure("2") do |config|
       node.vm.hostname = "vagrantbox-#{i}"
       node.vm.network "private_network", ip: "#{VAGRANTBOX_NETWORK}.20#{i}"
 
-      if Vagrant.has_plugin?("vagrant-disksize")
-        node.disksize.size = '100GB'
-      end
+      node.vm.disk :disk, size: VAGRANTBOX_DISKSIZE, primary: true
 
       #config.vm.synced_folder '.', '/vagrant', disabled: true
 
