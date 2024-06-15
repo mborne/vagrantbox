@@ -1,4 +1,4 @@
-# KVM
+# Using vagrantbox with KVM
 
 ## Install KVM packages
 
@@ -31,6 +31,13 @@ vagrant destroy -f --provider=libvirt
 
 ```bash
 sudo apt install virt-manager
+```
+
+## Use libvirt provider with generic/ubuntu2204 box
+
+```bash
+export VAGRANTBOX_BOX=generic/ubuntu2204
+vagrant up --provider=libvirt
 ```
 
 ## Ressources

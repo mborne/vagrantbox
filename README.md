@@ -39,7 +39,7 @@ See supported env vars in [Vagrantfile](Vagrantfile) :
 | Open a terminal in a VM   | `vagrant ssh vagrantbox-1`                                        |
 | Destroy VMs               | `vagrant destroy -f`                                              |
 
-(see also [gist.github.com - wpscholar/vagrant-cheat-sheet.md](https://gist.github.com/wpscholar/a49594e2e2b918f4d0c4#file-vagrant-cheat-sheet-md))
+> see also [gist.github.com - wpscholar/vagrant-cheat-sheet.md](https://gist.github.com/wpscholar/a49594e2e2b918f4d0c4#file-vagrant-cheat-sheet-md)
 
 ### Ansible 
 
@@ -62,8 +62,9 @@ ansible-playbook -i inventory playbooks/quickstart.yml --ask-become-pass
 ansible-playbook -i inventory playbooks/quickstart.yml -e configure_host_enabled=false
 ```
 
-> See [quickstart demo](docs/quickstart-demo.md).
+You should see something like this :
 
+[![asciicast](https://asciinema.org/a/664079.svg)](https://asciinema.org/a/664079)
 
 ## License
 

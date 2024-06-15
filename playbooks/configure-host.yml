@@ -12,6 +12,7 @@
       line: "{{ ansible_ssh_host }} {{ inventory_hostname }}"
       state: present
       path: /etc/hosts
+    throttle: 1
     delegate_to: localhost
     become: true
     when: configure_host_enabled|bool

@@ -1,11 +1,8 @@
 # Using vagrantbox on windows
 
-## Key points
+It is **easier to use vagrantbox with VirtualBox on an Ubuntu host**. Meanwhile Ansible provisionning is disabled in vagrant to avoid the requirement to install ansible on windows and make it **possible to work with a windows host**.
 
-* [WSL2 breaks VirtualBox 6.1](https://github.com/MicrosoftDocs/WSL/issues/798)
-* Ansible provisionning is disabled in vagrant to avoid the requirement to install ansible on windows.
-
-## Current solution
+## Using an ubuntu VM
 
 * Create an [ubuntu-desktop](https://ubuntu.com/download/desktop) VirtualBox VM (`devbox`)
 * Mount windows folder containing `vagrantbox` in the VM.
@@ -13,15 +10,27 @@
 * Use `vagrant` on windows to start `vagrantbox` VMs
 * Use `ansible` on linux `devbox` to configure `vagrantbox` VMs
 
-## It may work with KVM under WSL2...
+## Using WSL2 and KVM
 
-[KVM](kvm.md), vagrant and [K3S](../k3s.md) works under WSL2 but it is not handy to access services from windows host... Tried things like :
+The following approach now works :
 
-* Disable windows firewall on WSL2 network
-* Add a route on windows for `192.168.50.0/24` with the dynamic WSL2 IP
-* Resolve `whoami.localhost` as `192.168.50.201` on windows host
-* ...
+* Install WSL2 on windows with an Ubuntu-22.04
+* Edit `/etc/wsl2.conf` to allow KVM :
 
-## It should work with KVM in a linux VirtualBox VM...
+```conf
+[boot]
+systemd=true
+kernelCommandLine=amd_iommu=on iommu=pt kvm.ignore_msrs=1 kvm-amd.nested=1 kvm-amd.ept=1 kvm-amd.emulate_invalid_guest_state=0 kvm-amd.enable_shadow_vmcs=1 kvm-amd.enable_apicv=1
 
-...but I'm facing kernel crashes with `generic/ubuntu2004` in KVM VM with nested virtualization.
+[wsl2]
+nestedVirtualization=true
+```
+
+* Restart WSL :
+
+```bash
+wsl --shutdown
+wsl
+```
+
+* Use [KVM with and libvirt-provider](kvm.md)

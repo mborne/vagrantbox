@@ -15,19 +15,19 @@
     run_once: true
     delegate_to: localhost
 
-  - name: "Remove {{ inventory_hostname }} from ~/.ssh/known_host"
+  - name: "Remove hostname from ~/.ssh/known_host"
     ansible.builtin.shell: "ssh-keygen -f '{{ known_host_path }}' -R '{{ inventory_hostname }}'"
     when: known_host_stat.stat.exists
     throttle: 1
     delegate_to: localhost
 
-  - name: "Remove {{ ansible_ssh_host }} from ~/.ssh/known_host"
+  - name: "Remove IP from ~/.ssh/known_host"
     ansible.builtin.shell: "ssh-keygen -f '{{ known_host_path }}' -R '{{ ansible_ssh_host }}'"
     when: known_host_stat.stat.exists
     throttle: 1
     delegate_to: localhost
 
-  - name: "ssh-keyscan {{ ansible_ssh_host }} to ~/.ssh/known_host"
+  - name: "ssh-keyscan IP to ~/.ssh/known_host"
     ansible.builtin.shell: "ssh-keyscan -H '{{ ansible_ssh_host }}' >> '{{ known_host_path }}'"
     throttle: 1
     delegate_to: localhost
