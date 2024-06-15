@@ -11,9 +11,9 @@ This repository aims at providing a playground :
 
 ## Requirements
 
-* **VirtualBox** or [KVM](docs/kvm.md)
-* **Vagrant** to start VM (see [developer.hashicorp.com - Install Vagrant](https://developer.hashicorp.com/vagrant/downloads))
-* **Ansible** to configure host and VM (see [docs.ansible.com - Installing Ansible on Ubuntu](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu))
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or [KVM](docs/kvm.md)
+* [Vagrant](https://developer.hashicorp.com/vagrant/install)
+* [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu) if you want to use helper playbooks
 * Optional (http proxy) : `vagrant plugin install vagrant-proxyconf` to forward `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY`.
 
 ## Parameters
@@ -65,6 +65,7 @@ ansible-playbook -i inventory playbooks/quickstart.yml -e configure_host_enabled
 You should see something like this :
 
 [![asciicast](https://asciinema.org/a/664079.svg)](https://asciinema.org/a/664079)
+
 
 ## License
 
