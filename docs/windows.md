@@ -12,25 +12,9 @@ It is **easier to use vagrantbox with VirtualBox on an Ubuntu host**. Meanwhile 
 
 ## Using WSL2 and KVM
 
-The following approach now works :
+See :
 
-* Install WSL2 on windows with an Ubuntu-22.04
-* Edit `/etc/wsl2.conf` to allow KVM :
+* [mborne/toolbox - WSL2](https://github.com/mborne/toolbox/tree/master/wsl#readme)
+* [mborne/toolbox - KVM](https://github.com/mborne/toolbox/tree/master/kvm#readme)
 
-```conf
-[boot]
-systemd=true
-kernelCommandLine=amd_iommu=on iommu=pt kvm.ignore_msrs=1 kvm-amd.nested=1 kvm-amd.ept=1 kvm-amd.emulate_invalid_guest_state=0 kvm-amd.enable_shadow_vmcs=1 kvm-amd.enable_apicv=1
 
-[wsl2]
-nestedVirtualization=true
-```
-
-* Restart WSL :
-
-```bash
-wsl --shutdown
-wsl
-```
-
-* Use [KVM with and libvirt-provider](kvm.md)

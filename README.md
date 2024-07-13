@@ -11,7 +11,7 @@ This repository aims at providing a playground :
 
 ## Requirements
 
-* [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or [KVM](docs/kvm.md)
+* [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or [KVM](https://github.com/mborne/toolbox/tree/master/kvm#readme)
 * [Vagrant](https://developer.hashicorp.com/vagrant/install)
 * [Ansible](https://docs.ansible.com/ansible/latest/installation_guide/installation_distros.html#installing-ansible-on-ubuntu) if you want to use helper playbooks
 * Optional (http proxy) : `vagrant plugin install vagrant-proxyconf` to forward `HTTP_PROXY`, `HTTPS_PROXY` and `NO_PROXY`.
@@ -58,8 +58,10 @@ You may use [playbooks/quickstart.yml](playbooks/quick-start.yml) as follow :
 ```bash
 # /etc/hosts edition requires sudo
 ansible-playbook -i inventory playbooks/quickstart.yml --ask-become-pass
-# /etc/hosts edition can be disabled
+# To avoid sudo requirement, disable changes on /etc/hosts :
 ansible-playbook -i inventory playbooks/quickstart.yml -e configure_host_enabled=false
+# With KVM and generic/ubuntu2204 :
+ansible-playbook -i inventory playbooks/quickstart.yml -e vagrant_provider=libvirt -e ansible_ssh_pass=vagrant --ask-become-pass
 ```
 
 You should see something like this :
@@ -74,4 +76,4 @@ You should see something like this :
 ## Ressources
 
 * [Using vagrantbox on windows](docs/windows.md)
-* [blog.christophersmart.com - Using a dynamic libvirt inventory with Ansible](https://blog.christophersmart.com/2022/04/03/using-a-dynamic-libvirt-inventory-with-ansible/)
+
