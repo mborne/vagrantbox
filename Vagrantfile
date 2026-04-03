@@ -1,7 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
-VAGRANTBOX_BOX        = ENV["VAGRANTBOX_BOX"] || "ubuntu/jammy64"
+VAGRANTBOX_BOX        = ENV["VAGRANTBOX_BOX"] || "bento/ubuntu-24.04"
 VAGRANTBOX_NUM_NODES  = ENV["VAGRANTBOX_NUM_NODES"] || 4
 VAGRANTBOX_NUM_NODES  = VAGRANTBOX_NUM_NODES.to_i
 VAGRANTBOX_NETWORK    = ENV["VAGRANTBOX_NETWORK"] || "192.168.50"
@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
 
       node.vm.disk :disk, size: VAGRANTBOX_DISKSIZE, primary: true
 
-      #config.vm.synced_folder '.', '/vagrant', disabled: true
+      #node.vm.synced_folder '.', '/vagrant', disabled: true
 
       node.vm.provider "virtualbox" do |vb|
         vb.name = "vagrantbox-#{i}"
