@@ -35,7 +35,7 @@ Vagrant.configure("2") do |config|
 
       node.vm.disk :disk, size: VAGRANTBOX_DISKSIZE, primary: true
 
-      #config.vm.synced_folder '.', '/vagrant', disabled: true
+      #node.vm.synced_folder '.', '/vagrant', disabled: true
 
       node.vm.provider "virtualbox" do |vb|
         vb.name = "vagrantbox-#{i}"
